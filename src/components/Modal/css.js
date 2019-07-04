@@ -15,7 +15,7 @@ const Modal = styled.div`
   width: ${props => {
     switch (props.modalSize) {
       case "lg":
-        return "800";
+        return "600";
       default:
         return "480";
     }

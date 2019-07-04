@@ -3,7 +3,7 @@ import ReactDom from "react-dom";
 import PropTypes from "prop-types";
 
 // styled
-import StyledModal from "./Modal";
+import StyledModal from "./css";
 
 const modalRoot = document.getElementById("modal-root");
 const propTypes = {
@@ -49,10 +49,10 @@ class Modal extends Component {
         modalSize={this.props.modalSize}
         onTransitionEnd={this.transitionEnd}
       >
-        <div class="background" />
+        <div className="background" />
         <div className="box-dialog">
           <div className="box-header">
-            <h4 className="box-title">Pure React Modal</h4>
+            <h4 className="box-title">React Modal</h4>
             <button onClick={this.handleClick} className="close">
               ×
             </button>
@@ -71,12 +71,14 @@ Modal.open = id => e => {
   e.preventDefault();
   let modal = Modal.modals.find(x => x.props.id === id);
   modal.setState({ isOpen: true });
+  document.body.classList.add("hidden");
 };
 
 Modal.close = id => e => {
   e.preventDefault();
   let modal = Modal.modals.find(x => x.props.id === id);
   modal.setState({ isOpen: false });
+  document.body.classList.remove("hidden");
 };
 
 Modal.propTypes = propTypes;
